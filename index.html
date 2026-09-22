@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задание 2 — Мой сайт</title>
+    <!-- Подключаем внешний файл стилей -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ШАПКА: лого, название, меню -->
+    <header class="site-header">
+        <div class="header-inner">
+            <!-- Логотип -->
+            <div id="logo">Лого</div>
+
+            <!-- Название сайта -->
+            <h1 id="site-title">Название сайта</h1>
+
+            <!-- Меню навигации -->
+            <nav id="main-menu">
+                <a href="#">Ссылка меню 1</a>
+                <a href="#">Ссылка 2</a>
+                <a href="#">Ссылка 3</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ОСНОВНОЙ КОНТЕНТ -->
+    <main class="content">
+
+        <!-- Список гиперссылок -->
+        <section class="block">
+            <h2>Список гиперссылок</h2>
+            <ul class="links-list">
+                <li><a href="https://kubsu.ru">Кубанский государственный университет</a></li>
+                <li><a href="https://www.w3.org/">W3C — консорциум Всемирной паутины</a></li>
+                <li><a href="https://validator.w3.org/">Валидатор HTML</a></li>
+                <li><a href="https://developer.mozilla.org/ru/">MDN Web Docs</a></li>
+            </ul>
+        </section>
+
+        <!-- Таблица -->
+        <section class="block">
+            <h2>Таблица</h2>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>№</th>
+                        <th>Название</th>
+                        <th>Описание</th>
+                        <th>Количество</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Товар А</td>
+                        <td>Описание товара А</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Товар Б</td>
+                        <td>Описание товара Б</td>
+                        <td>20</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Товар В</td>
+                        <td>Описание товара В</td>
+                        <td>30</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Товар Г</td>
+                        <td>Описание товара Г</td>
+                        <td>40</td>
+                    </tr>
+                    <tr>
+                        <!-- Объединённая ячейка по горизонтали (colspan=2) -->
+                        <td colspan="2">Итого по двум товарам</td>
+                        <td>Сумма</td>
+                        <td>50</td>
+                    </tr>
+                    <tr>
+                        <!-- Объединённая ячейка по горизонтали на всю ширину -->
+                        <td colspan="4">Итоговая строка таблицы</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Форма -->
+        <section class="block">
+            <h2>Форма</h2>
+            <form action="#" method="post">
+                <p>
+                    <label for="name">Имя:</label>
+
+                    <input type="text" id="name" name="name" placeholder="Введите имя">
+                </p>
+                <p>
+                    <label for="email">Email:</label>
+
+                    <input type="email" id="email" name="email" placeholder="you@example.com">
+                </p>
+                <p>
+                    <label for="message">Сообщение:</label>
+
+                    <textarea id="message" name="message" rows="4" placeholder="Ваше сообщение"></textarea>
+                </p>
+                <p>
+                    <button type="submit">Отправить</button>
+</p>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- ПОДВАЛ -->
+    <footer class="site-footer">
+        <p>(c) Сергей Синица</p>
+    </footer>
+
+</body>
+</html>
