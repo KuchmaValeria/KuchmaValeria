@@ -1,4 +1,7 @@
-/* ===== БАЗОВЫЕ СБРОСЫ ===== */
+/* ============================================================
+   MOBILE FIRST — базовые стили для смартфонов (портрет)
+   ============================================================ */
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -11,68 +14,68 @@ body {
     color: #222;
 }
 
-/* ===== ОБЩИЙ КОНТЕЙНЕР ПО ЦЕНТРУ ===== */
-/* Класс .container можно было бы добавить в HTML,
-   но здесь мы центрируем контент через .content */
-.content {
-    max-width: 960px;      /* максимальная ширина 960px */
-    margin: 0 auto;        /* выравнивание по центру */
-    padding: 20px;
-}
-
-/* ===== ШАПКА ===== */
+/* -------- Шапка -------- */
 .site-header {
-    width: 100%;           /* тянется на всю ширину окна */
+    width: 100%;
     background-color: #6fa8dc;
     border-bottom: 2px solid #3d85c6;
     padding: 10px 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* Внутренний контейнер шапки — тоже 960px по центру */
 .header-inner {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 0 20px;
-    overflow: hidden;      /* чтобы обтекание лого работало корректно */
+    width: 100%;
+    padding: 0 15px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
 }
 
 /* Логотип — круг */
 #logo {
-    float: left;           /* обтекание: название сайта справа */
     width: 100px;
     height: 100px;
     border: 2px solid #000;
-    border-radius: 50%;    /* делает круг */
+    border-radius: 50%;
     background-color: #cfe2f3;
-    text-align: center;
-    line-height: 96px;     /* вертикальное центрирование текста */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-weight: bold;
     font-size: 18px;
-    margin-right: 20px;
 }
 
 /* Название сайта */
 #site-title {
-    font-size: 28px;
-    padding-top: 10px;
+    font-size: 24px;
     color: #000;
+    text-align: center;
 }
 
-/* Меню */
+/* Меню — на смартфоне вертикальный список */
 #main-menu {
-    clear: both;           /* меню под лого и названием */
-    padding-top: 10px;
+    width: 100%;
+    padding: 10px 15px 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
 }
 
 #main-menu a {
-    display: inline-block;
-    margin-right: 15px;
-    padding: 6px 12px;
+    display: block;
+    padding: 10px 12px;
     background-color: #cfe2f3;
     border: 1px solid #3d85c6;
     color: #000;
     text-decoration: none;
     border-radius: 4px;
+    text-align: center;
 }
 
 #main-menu a:hover {
@@ -80,11 +83,17 @@ body {
     color: #fff;
 }
 
-/* ===== БЛОКИ КОНТЕНТА ===== */
+/* -------- Основной контент -------- */
+.content {
+    width: 100%;
+    padding: 15px;
+}
+
+/* Блоки контента */
 .block {
     background-color: #6fa8dc;
-    padding: 15px 20px;
-    margin-bottom: 20px;
+    padding: 15px;
+    margin-bottom: 15px;
     border: 1px solid #3d85c6;
 }
 
@@ -93,7 +102,37 @@ body {
     color: #000;
 }
 
-/* ===== СПИСОК ССЫЛОК ===== */
+/* ===== ORDER для Mobile First =====
+   В HTML список ссылок идёт ПЕРВЫМ, таблица — ВТОРОЙ.
+   На смартфоне нужно, чтобы таблица была ВИЗУАЛЬНО ВЫШЕ.
+   Используем Flex Box order:
+   - по умолчанию (мобильные) у .content flex-direction: column
+   - #table получает order: -1 (поднимается наверх)
+   - #links остаётся order: 0
+   На десктопе order сбрасывается, и блоки идут в обычном потоке.
+*/
+.content {
+    display: flex;
+    flex-direction: column;
+}
+
+#table {
+    order: -1;
+}
+
+#links {
+    order: 0;
+}
+
+#form {
+    order: 0;
+}
+
+#fragment {
+    order: 0;
+}
+
+/* -------- Список ссылок -------- */
 .links-list {
     list-style: none;
 }
@@ -111,10 +150,10 @@ body {
     color: #fff;
 }
 
-/* ===== ТАБЛИЦА ===== */
+/* -------- Таблица -------- */
 .data-table {
     width: 100%;
-    border-collapse: collapse;   /* убирает двойные границы */
+    border-collapse: collapse;
     background-color: #fff;
 }
 
@@ -130,7 +169,6 @@ body {
     color: #fff;
 }
 
-/* Чередование фона строк: чётные — светлее, нечётные — темнее */
 .data-table tbody tr:nth-child(even) {
     background-color: #e6f0fa;
 }
@@ -139,40 +177,138 @@ body {
     background-color: #cfe2f3;
 }
 
-/* ===== ФОРМА ===== */
+/* -------- Форма -------- */
 form p {
     margin-bottom: 10px;
 }
 
 input[type="text"],
 input[type="email"],
-textarea {
+input[type="tel"],
+input[type="date"],
+textarea,
+select {
     width: 100%;
     max-width: 400px;
     padding: 6px;
     border: 1px solid #3d85c6;
     border-radius: 4px;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+fieldset {
+    border: 1px solid #3d85c6;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+legend {
+    padding: 0 5px;
+    font-weight: bold;
 }
 
 button {
-    padding: 8px 16px;
+    padding: 10px 20px;
     background-color: #3d85c6;
     color: #fff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    font-size: 16px;
 }
 
 button:hover {
     background-color: #2a6299;
 }
 
-/* ===== ПОДВАЛ ===== */
+/* -------- Подвал -------- */
 .site-footer {
-    width: 100%;            /* на всю ширину окна */
+    width: 100%;
     background-color: #6fa8dc;
     border-top: 2px solid #3d85c6;
     text-align: center;
     padding: 15px 0;
-    margin-top: 20px;
+}
+
+/* ============================================================
+   MEDIA QUERY — планшеты и десктопы
+   ============================================================ */
+
+min-width: 768px {
+
+    /* -------- Шапка -------- */
+    .site-header {
+        align-items: stretch;
+    }
+
+    .header-inner {
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 20px;
+        padding: 0 20px;
+        max-width: 960px;
+        margin: 0 auto;
+    }
+
+    #site-title {
+        font-size: 28px;
+        text-align: left;
+    }
+
+    /* Меню — горизонтальное */
+    #main-menu {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 10px 20px 0;
+
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    #main-menu a {
+        display: inline-block;
+        text-align: left;
+    }
+
+    /* -------- Контент -------- */
+    .content {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 20px;
+
+        /* На десктопе блоки идут в обычном порядке,
+           order не нужен — сбрасываем */
+        display: block;
+    }
+
+    #table,
+    #links,
+    #form,
+    #fragment {
+        order: 0;
+    }
+
+    .block {
+        margin-bottom: 20px;
+    }
+
+    /* -------- Подвал -------- */
+    .site-footer {
+        margin-top: 20px;
+    }
+}
+
+/* ============================================================
+   Дополнительно: широкие десктопы (не обязательно, но красиво)
+   ============================================================ */
+
+min-width: 1200px {
+    .header-inner,
+    #main-menu,
+    .content {
+        max-width: 1100px;
+    }
 }
